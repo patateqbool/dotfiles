@@ -1,0 +1,97 @@
+" for bundle, various plugins
+    set nocompatible                " be iMproved, required
+    filetype off                    " required
+
+    let g:HasVundle = !empty(glob(expand("~") . "/.vim/bundle/Vundle.vim/*"))
+    if g:HasVundle
+        set rtp+=~/.vim/bundle/Vundle.vim
+        call vundle#begin()
+
+        Plugin 'gmarik/Vundle.vim'
+        Plugin 'bling/vim-airline'
+        Plugin 'tpope/vim-sensible'
+        Plugin 'Valloric/YouCompleteMe'
+        Plugin 'SirVer/ultisnips'
+        Plugin 'scrooloose/syntastic'
+        Plugin 'tpope/vim-commentary'
+        Plugin 'tpope/vim-endwise'
+        Plugin 'javacomplete'
+        Plugin 'Yggdroot/indentLine'
+
+        call vundle#end()
+    end
+
+" For syntastic
+    let g:syntastic_tex_checkers = ['chktek']
+
+" For C++
+    let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm_extra_conf.py'
+    let g:syntastic_cpp_compiler_options='-std=c++1y'
+    let g:ycm_complete_in_comments=1
+    let g:ycm_confirm_extra_conf=0
+    set matchpairs+=<:>
+    autocmd FileType c,cpp setlocal comments-=:// comments+=f://
+    autocmd FileType c,cpp setlocal textwidth=0
+
+    set path+=include
+
+" For Java
+    autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+    set suffixes+=.class
+    let g:syntastic_java_javac_config_file_enabled=1
+
+" For html and css
+    autocmd Filetype htlm,css set sw=2
+
+" Spell checking and wrapping in some file types
+    autocmd Filetype gitcommit set spell textwidth=72 nofoldenable colorcolumn=51,73
+    autocmd Filetype mkd,liquid,tex set spell textwidth=80
+
+" Don't exit visual mode when shifting.
+    vnoremap < <gv
+    vnoremap > >gv
+
+" Other stuff
+    set nocompatible
+    set noignorecase
+    set showmode showcmd
+    set ruler
+    set report=0
+    set undolevels=1000
+    set backspace=indent,eol,start
+    set sidescroll=1
+    set wildchar=<Tab>
+    set joinspaces
+    set errorformat=%f:%l:\ %m
+    set whichwrap=b,s,h,l,<,>,~,[,]
+    filetype plugin indent on
+    syntax on
+
+" Coloration
+    set t_Co=256
+    colorscheme toffan
+    match BadWhitespace /\s\+$\| \+\t/
+
+
+" Personal changes
+    set shiftwidth=4            " number of spaces for a tab
+    set expandtab               " use spaces, not tabs
+    set autoindent              " auto indentation
+    set number                  " number of the current line
+    set relativenumber          " relative number of line
+
+
+" Move up and down by visual lines not buffer lines.
+    nnoremap <Up>   gk
+    vnoremap <Up>   gk
+    nnoremap <Down> gj
+    vnoremap <Down> gj
+
+" Shortcuts to insert a line
+    nmap <S-Enter> O<Esc>
+    nmap <CR> o<Esc>
+
+" 80th column rule
+    set textwidth=80
+    set colorcolumn=81,91,101
+    hi ColorColumn ctermbg=235
