@@ -1,6 +1,7 @@
 ---------------------------
 -- Default awesome theme --
 ---------------------------
+local gears = require("gears")
 
 theme = {}
 
@@ -73,8 +74,44 @@ theme.titlebar_maximized_button_focus_inactive  = "/usr/share/awesome/themes/def
 theme.titlebar_maximized_button_normal_active = "/usr/share/awesome/themes/default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = "/usr/share/awesome/themes/default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = "~/Images/patatetropstylee.jpg"
---theme.wallpaper = "~/Images/Wallpapers/mlp-charge.jpg"
+-- Random Wallpaper
+wp_index = 4
+wp_timeout  = 300
+wp_path = "/home/patate/Images/"
+wp_files = { "01.png", "02.png", "03.png", "04.png", "05.png", "06.png", "07.png", "08.png", "09.png", "patatetropstylee.jpg" }
+
+gears.wallpaper.maximized("/home/patate/Images/patatetropstylee.jpg", s, true)
+
+-- -- setup the timer
+wp_timer = timer { timeout = wp_timeout }
+wp_timer:connect_signal("timeout", function()
+-- set wallpaper to current index
+for s = 1, screen.count() do
+gears.wallpaper.maximized( wp_path .. wp_files[wp_index] , s, true)
+end
+-- stop the timer
+wp_timer:stop()
+
+-- get next random index
+wp_old = wp_index
+while wp_old == wp_index do
+wp_index = math.random( 1, #wp_files)
+end
+
+--restart the timer
+wp_timer.timeout = wp_timeout
+wp_timer:start()
+end)
+
+--
+--initial start when rc.lua is first run
+wp_timer:start()
+
+
+
+--t = {"~/Images/patatetropstylee.jpg", "~/Images/dataGueule2.png",}
+--t_tab = #t
+--theme.wallpaper = t[1]
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = "/usr/share/awesome/themes/default/layouts/fairhw.png"

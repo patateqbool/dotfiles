@@ -74,11 +74,12 @@ local layouts =
 -- }}}
 
 -- {{{ Wallpaper
-if beautiful.wallpaper then
-    for s = 1, screen.count() do
-        gears.wallpaper.centered(beautiful.wallpaper, s, "black")
-    end
-end
+
+--if beautiful.wallpaper then
+--    for s = 1, screen.count() do
+--        gears.wallpaper.centered(beautiful.wallpaper, s, "black")
+--    end
+--end
 -- }}}
 
 -- {{{ Tags
@@ -627,6 +628,9 @@ globalkeys = awful.util.table.join(
 
     awful.key({ modkey }, Numeric_Pad[9], function ()
         awful.util.spawn("paplay /home/toffan/Musique/Répliques/deconcentration.ogg")
+    end),
+    awful.key({ modkey, "Shift"   }, "s", function ()
+        wp_timer:emit_signal("timeout")
     end)
 
 )
