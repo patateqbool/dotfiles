@@ -78,7 +78,7 @@ theme.titlebar_maximized_button_focus_active  = "/usr/share/awesome/themes/defau
 wp_index = 4
 wp_timeout  = 300
 wp_path = "/home/patate/Images/"
-wp_files = { "01.png", "02.png", "03.png", "04.png", "05.png", "06.png", "07.png", "08.png", "09.png", "patatetropstylee.jpg" }
+wp_files = { "01.png", "02.png", "03.png", "04.png", "05.png", "06.png", "07.png", "08.png", "09.png", "10.png", "patatetropstylee.jpg" }
 
 gears.wallpaper.maximized("/home/patate/Images/patatetropstylee.jpg", s, true)
 
