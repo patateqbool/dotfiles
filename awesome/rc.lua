@@ -41,7 +41,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/toffan-theme/theme.lua")
+beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/patate-theme/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "terminator"
@@ -243,7 +243,7 @@ vicious.register(lanwidget, vicious.widgets.net,
     function (widget, args)
         r = ' LAN: '
 
-        if args['{enp0s25 carrier}'] == 1 then
+        if args['{enp2s0 carrier}'] == 1 then
             r = r .. '<span color="#00ff00">ON</span> '
         else
             r = r .. '<span color="red">OFF</span> '
@@ -265,7 +265,7 @@ vicious.register(wifiwidget, vicious.widgets.wifi,
         end
 
         return r
-    end, 10, 'wlp2s0')
+    end, 10, 'wlp3s0')
 
 -- Create a wibox for each screen and add it
 mywibox = {}
