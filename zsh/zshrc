@@ -66,10 +66,25 @@ mkdircd () {
     mkdir $1;
     cd $1;
 }
-todo () {
-    markdown ~/todolist.md > /tmp/todo.html;
-    firefox /tmp/todo.html;
+
+ssh7 () {
+    ssh guilboj@$1
 }
+
+sshr7 () {
+    ssh root@$1
+}
+
+co () {
+    sudo systemctl start dhcpcd@$1
+}
+
+wifi () {
+    sudo netctl start wlp2s0-$1
+}
+
+alias wifinp='sudo netctl start wlp2s0-wifinp'
+alias ap='sudo netctl start wlp2s0-AndroidAP'
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
