@@ -113,8 +113,8 @@ alias -s pdf="evince "
 
 alias azer='setxkbmap fr bepo'
 alias bépo='setxkbmap fr'
-alias ssh-net7='ssh guilboj@titan.inpt.fr'
-alias deco='sudo ~/disconnectWiFi.sh'
+alias rpotatoe='ssh root@potatoe.inpt.fr'
+alias potatoe='ssh patate@potatoe.inpt.fr'
 ### }}}
 
 
