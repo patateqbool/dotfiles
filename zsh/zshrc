@@ -68,11 +68,11 @@ mkdircd () {
 }
 
 ssh7 () {
-    ssh guilboj@$1
+    ssh guilboj@$1.inpt.fr
 }
 
 sshr7 () {
-    ssh root@$1
+    ssh root@$1.inpt.fr
 }
 
 co () {
@@ -85,7 +85,7 @@ wifi () {
 
 alias wifinp='sudo netctl start wlp2s0-wifinp'
 alias ap='sudo netctl start wlp2s0-AndroidAP'
-
+alias météo='curl wttr.in'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias pacman='pacman --color auto'
