@@ -10,6 +10,18 @@ setopt sharehistory
 ### }}}
 
 
+#custom welcome message
+wget -q --spider http://google.fr
+if [ $? -eq 0 ]; then
+    link=true
+else
+    link=false
+fi
+
+if $link; then
+    curl wttr.in
+fi
+
 ### OPTIONS
 setopt nomatch
 setopt autocd
