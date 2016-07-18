@@ -95,6 +95,8 @@ wifi () {
     sudo netctl start wlp2s0-$1
 }
 
+alias theguy='ssh patate@theguy.fr'
+alias rtheguy='ssh root@theguy.fr'
 alias wifinp='sudo netctl start wlp2s0-wifinp'
 alias ap='sudo netctl start wlp2s0-AndroidAP'
 alias météo='curl wttr.in'
