@@ -9,6 +9,10 @@ setopt appendhistory
 setopt sharehistory
 ### }}}
 
+# Run tmux when shell open
+# If not running interactively, do not do anything
+[[ $- != *i* ]] && return
+[[ -z "$TMUX" ]] && exec tmux
 
 #custom welcome message
 wget -q --spider http://google.fr
@@ -90,8 +94,15 @@ wifi () {
 stmux () {
     echo "password :"
     read -s password
-    sshpass -p $password scp /home/patate/dotfiles/tmux/tmux.conf patate@theguy.fr:/tmp/
+    sshpass -p $password scp /home/patate/dotfiles/tmux/tmux.conf $1:/tmp/.tmux.conf
     sshpass -p $password ssh -t $1 "tmux source-file /tmp/.tmux.conf; tmux attach || tmux new"
+}
+
+stmuxp () {
+    echo "password :"
+    read -s password
+    sshpass -p $password scp -P $2 /home/patate/dotfiles/tmux/tmux.conf $1:/tmp/.tmux.conf
+    sshpass -p $password ssh -p $2 -t $1 "tmux source-file /tmp/.tmux.conf; tmux attach || tmux new"
 }
 
 alias theguy='ssh patate@theguy.fr'
