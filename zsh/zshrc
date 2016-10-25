@@ -79,20 +79,19 @@ mkdircd () {
     cd $1;
 }
 
-ssh7 () {
-    ssh guilboj@$1.inpt.fr
-}
-
-sshr7 () {
-    ssh root@$1.inpt.fr
-}
-
 co () {
     sudo systemctl start dhcpcd@$1
 }
 
 wifi () {
-    sudo netctl start wlp2s0-$1
+    sudo netctl start wlp3s0-$1
+}
+
+stmux () {
+    echo "password :"
+    read -s password
+    sshpass -p $password scp /home/patate/dotfiles/tmux/tmux.conf patate@theguy.fr:/tmp/
+    sshpass -p $password ssh -t $1 "tmux source-file /tmp/.tmux.conf; tmux attach || tmux new"
 }
 
 alias theguy='ssh patate@theguy.fr'
